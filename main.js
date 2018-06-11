@@ -1,5 +1,6 @@
 const tmi = require('tmi.js')
 const request = require('superagent')
+const readline = require('readline')
 
 // Valid commands start with:
 let commandPrefixes = [
@@ -76,9 +77,23 @@ client.on('disconnected', onDisconnectedHandler)
 // Connect to Twitch:
 client.connect()
 
-for (let channel of opts.channels) {
-    sendMessage(channel, {}, "YO YO YO, DICCBOT IN DA HOUSE!!! READY TO GET MY LINGUISTICS ON BABY!!!!!!")
-}
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+rl.on('line', (input) => {
+    for (let channel of opts.channels) {
+        sendMessage(channel, {}, input)
+    }
+
+    console.log(`Received: ${input}`);
+});
+
+
+// for (let channel of opts.channels) {
+//     sendMessage(channel, {}, "YO YO YO, DICCBOT IN DA HOUSE!!! READY TO GET MY LINGUISTICS ON BABY!!!!!!")
+// }
 
 // Called every time a message comes in:
 function onMessageHandler(target, context, msg, self) {
