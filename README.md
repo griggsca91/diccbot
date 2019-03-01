@@ -1,1 +1,1 @@
-# diccbot
+# dictionary_bot
