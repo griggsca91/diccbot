@@ -91,10 +91,6 @@ rl.on('line', (input) => {
 });
 
 
-// for (let channel of opts.channels) {
-//     sendMessage(channel, {}, "YO YO YO, DICCBOT IN DA HOUSE!!! READY TO GET MY LINGUISTICS ON BABY!!!!!!")
-// }
-
 // Called every time a message comes in:
 function onMessageHandler(target, context, msg, self) {
     if (self) { return } // Ignore messages from the bot
